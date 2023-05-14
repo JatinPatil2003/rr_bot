@@ -1,0 +1,84 @@
+<?xml version="1.0" ?>
+<robot name="rr_bot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<xacro:include filename="$(find rr_bot_description)/urdf/materials.xacro" />
+<xacro:include filename="$(find rr_bot_description)/urdf/rr_bot.trans" />
+<xacro:include filename="$(find rr_bot_description)/urdf/rr_bot.gazebo" />
+<link name="base_link">
+  <inertial>
+    <origin xyz="2.9905664349543436e-09 -7.455821471877891e-06 0.02238512437556862" rpy="0 0 0"/>
+    <mass value="5.561675295236603"/>
+    <inertia ixx="0.039038" iyy="0.039037" izz="0.048444" ixy="0.0" iyz="9e-06" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://rr_bot_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="steel_satin"/>
+  </visual>
+  <collision>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://rr_bot_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="arm1_v5_1">
+  <inertial>
+    <origin xyz="-2.833715213307269e-15 -0.014866406841207703 0.09000000357953936" rpy="0 0 0"/>
+    <mass value="0.595327569316126"/>
+    <inertia ixx="0.001999" iyy="0.001998" izz="3.7e-05" ixy="0.0" iyz="-0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.0 0.015 -0.25" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://rr_bot_description/meshes/arm1_v5_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="steel_satin"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.0 0.015 -0.25" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://rr_bot_description/meshes/arm1_v5_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="arm2_v4_1">
+  <inertial>
+    <origin xyz="-2.438455743822735e-13 0.014910342072508347 0.06452794998082584" rpy="0 0 0"/>
+    <mass value="0.4435284754173208"/>
+    <inertia ixx="0.000834" iyy="0.000833" izz="2.7e-05" ixy="-0.0" iyz="-3e-06" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.0 0.015 -0.43" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://rr_bot_description/meshes/arm2_v4_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="steel_satin"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.0 0.015 -0.43" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://rr_bot_description/meshes/arm2_v4_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="Revolute 4" type="continuous">
+  <origin xyz="0.0 -0.015 0.25" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="arm1_v5_1"/>
+  <axis xyz="0.0 -1.0 0.0"/>
+</joint>
+
+<joint name="Revolute 5" type="continuous">
+  <origin xyz="0.0 0.0 0.18" rpy="0 0 0"/>
+  <parent link="arm1_v5_1"/>
+  <child link="arm2_v4_1"/>
+  <axis xyz="-0.0 1.0 0.0"/>
+</joint>
+
+</robot>
