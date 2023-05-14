@@ -3,15 +3,12 @@ import rospy
 import math
 from sensor_msgs.msg import JointState
 
-def control_joints(arm1, arm2):
+def control_joints(angles):
     joint_state = JointState()
     joint_state.header.stamp = rospy.Time.now()
     joint_state.name = ['Revolute 4', 'Revolute 5']
 
-    arm1_radian = math.radians(arm1)
-    arm2_radian = math.radians(arm2)
-
-    joint_state.position = [arm1_radian, arm2_radian]
+    joint_state.position = angles
 
     joint_publisher.publish(joint_state)
     rate.sleep()
@@ -21,9 +18,9 @@ joint_publisher = rospy.Publisher('/joint_states', JointState, queue_size=10)
 rate = rospy.Rate(50)
 
 while not rospy.is_shutdown():
-    # arm1 = float(input("Enter angle of arm1 [-60 : 60] : "))
-    # arm2 = float(input("Enter angle of arm2 [-60 : 60] : "))
-    arm1 = -60
-    arm2 = 30
+    input_str = input("Enter angle of arm1 and arm2 (angle1 angle2) in [-180:180] : ")
+    position = input_str.split(" ")
+    position = list(map(int, position))
+    position = list(map(math.radians, position))
     
-    control_joints(arm1, arm2)
+    control_joints(position)

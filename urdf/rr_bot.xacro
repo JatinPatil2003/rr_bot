@@ -15,7 +15,7 @@
     <geometry>
       <mesh filename="package://rr_bot_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
     </geometry>
-    <material name="steel_satin"/>
+    <material name="base_colour"/>
   </visual>
   <collision>
     <origin xyz="0 0 0" rpy="0 0 0"/>
@@ -36,7 +36,7 @@
     <geometry>
       <mesh filename="package://rr_bot_description/meshes/arm1_v5_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
-    <material name="steel_satin"/>
+    <material name="arm1_colour"/>
   </visual>
   <collision>
     <origin xyz="-0.0 0.015 -0.25" rpy="0 0 0"/>
@@ -57,7 +57,7 @@
     <geometry>
       <mesh filename="package://rr_bot_description/meshes/arm2_v4_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
-    <material name="steel_satin"/>
+    <material name="arm2_colour"/>
   </visual>
   <collision>
     <origin xyz="-0.0 0.015 -0.43" rpy="0 0 0"/>

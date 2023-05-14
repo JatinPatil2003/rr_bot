@@ -7,5 +7,14 @@
 <material name="steel_satin">
   <color rgba="0.6274509803921569 0.6274509803921569 0.6274509803921569 1.0"/>
 </material>
+<material name="base_colour">
+  <color rgba="1.0 0.4 0.0 1.0"/>
+</material>
+<material name="arm1_colour">
+  <color rgba="0.0 1.0 1.0 1.0"/>
+</material>
+<material name="arm2_colour">
+  <color rgba="1.0 0.0 1.0 1.0"/>
+</material>
 
 </robot>
